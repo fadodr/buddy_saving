@@ -48,7 +48,7 @@ export const login = async ({ input }: ControllerArgs) => {
           parseInt(config.refreshTokenExpiresIn)
         ).toISOString(),
       },
-      remUserInfo,
+      user : remUserInfo,
     },
   };
 };

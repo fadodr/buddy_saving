@@ -3,7 +3,7 @@ import { ErrorDetailsDescriptor } from '../types';
 export abstract class ApiError extends Error {
   abstract _statusCode: number;
   abstract _message: String;
-  abstract _details: ErrorDetailsDescriptor;
+  abstract _details: ErrorDetailsDescriptor | null;
 
   constructor(message: string) {
     super(message);
@@ -14,5 +14,5 @@ export abstract class ApiError extends Error {
 
   abstract get statusCode(): number;
   abstract override get message(): string;
-  abstract get details(): ErrorDetailsDescriptor;
+  abstract get details(): ErrorDetailsDescriptor | null;
 }

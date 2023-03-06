@@ -36,10 +36,10 @@ export const controllerHandler = (
           if (querySchema) JoiValidate(querySchema, query);
         }
       } catch (error: any) {
-        throw new UnprocessableError(error.message);
+        throw new UnprocessableError(error.details);
       }
 
-        const controllerResult = await controllerFn(req, res, next);
+        const controllerResult = await controllerFn(controllerArgs);
         
         if (!controllerResult) {
             res.status(200).send({ status: true });
@@ -49,7 +49,7 @@ export const controllerHandler = (
         const { code, ...data } = controllerResult;
         res.status(code ?? 200).send({
             status: true,
-            message : data
+            ...data
         })
     } catch (error) {
         next(error);

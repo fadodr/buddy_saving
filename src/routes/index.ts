@@ -4,7 +4,7 @@ import savingPlanRoute from './savingPlan';
 
 const router = Router();
 
-router.use('users', userRoute);
-router.use('saving-plans', savingPlanRoute);
+router.use('/users', userRoute);
+router.use('/saving-plans', savingPlanRoute);
 
 export default router;

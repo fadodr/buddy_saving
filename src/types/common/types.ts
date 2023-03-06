@@ -6,8 +6,3 @@ export type ControllerHandlerFn = (
   res: Response,
   next: NextFunction
 ) => Promise<void>;
-
-export type ErrorDetailsDescriptor = Array<{
-  message: string;
-  path: String;
-}> | null;

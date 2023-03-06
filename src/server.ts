@@ -2,18 +2,19 @@ import http from 'http';
 
 import app from './app';
 import { config, sequelize } from './configs';
+import logger from './logger';
 const port = config.port;
 
 const server = http.createServer({}, app);
 
 sequelize
-  .sync({ force: true })
+  .sync()
   .then(() => {
-    console.log('database connected successfully');
+    logger.info('database connected successfully');
     server.listen(port, () => {
-      console.log(`server is now running on port ${port}`);
+      logger.info(`server is now running on port ${port}`);
     });
   })
   .catch((error) => {
-    console.log(error);
+    logger.error(error);
   });

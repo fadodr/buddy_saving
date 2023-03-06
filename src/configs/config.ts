@@ -26,5 +26,5 @@ export enum InviteStatus {
 
 export enum SavingPlanRole {
     owner = 'owner',
-    memeber = 'memeber'
+    member = 'member'
 }

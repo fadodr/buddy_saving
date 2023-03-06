@@ -5,7 +5,7 @@ import { controllerHandler } from '../helpers';
 
 const router = Router();
 
-router.post('signup', controllerHandler(createAccount, createAccountSchema));
-router.post('login', controllerHandler(login, loginSchema));
+router.post('/signup', controllerHandler(createAccount, createAccountSchema));
+router.post('/login', controllerHandler(login, loginSchema));
 
 export default router;

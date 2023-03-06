@@ -1,6 +1,7 @@
 import { ErrorRequestHandler } from 'express';
 import { ApiError } from '../errors';
 import { ErrorMessage } from '../types';
+import logger from '../logger';
 
 export const errorMiddleware: ErrorRequestHandler = (error, req, res, next) => {
     let statusCode = 500;
@@ -13,7 +14,7 @@ export const errorMiddleware: ErrorRequestHandler = (error, req, res, next) => {
         details = error.details;
     }
     else {
-        console.log(error.message);
+        logger.error(error.message);
     }
 
     let errorMsg : ErrorMessage  = {

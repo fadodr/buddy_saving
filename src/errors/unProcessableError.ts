@@ -1,16 +1,39 @@
 import { ApiError } from './apiError';
-import { ErrorDetailsDescriptor } from '../types';
+import {
+  ErrorDetailsDescriptor,
+  ValidationErrorsParams,
+  ValidationResult,
+} from '../types';
+
+const parseValidationErrors = (
+  validationErrors: ValidationErrorsParams[]
+): ValidationResult[] => {
+  return validationErrors.map(({ path, type, message }) => {
+    let fieldErrorCode = 'INVALID VALUE';
+    if (type === 'any.required') {
+      fieldErrorCode = 'MISSING VALUE';
+    }
+
+    return {
+      code: fieldErrorCode,
+      path: path.join('.'),
+      message,
+    };
+  });
+};
 
 export class UnprocessableError extends ApiError {
   _statusCode = 422;
   _message: string;
   _details: ErrorDetailsDescriptor;
 
-  constructor(details : ErrorDetailsDescriptor) {
-    super('Invalid Input');
-    this._message = 'Invalid Input';
-      
-      this._details = details;    
+  constructor(validationErrors: ValidationErrorsParams[]) {
+    super('Invalid Inputs');
+    this._message = 'Invalid Inputs';
+
+    this._details = {
+      fields: parseValidationErrors(validationErrors),
+    };
 
     Object.setPrototypeOf(this, UnprocessableError.prototype);
   }

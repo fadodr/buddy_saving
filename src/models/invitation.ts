@@ -48,9 +48,9 @@ Invitation.init(
         key: 'id',
       },
     },
-        status : {
-            type: DataTypes.ENUM('join', 'decline', 'pending'),
-            defaultValue : 'pending'
+    status : {
+        type: DataTypes.ENUM('join', 'decline', 'pending'),
+        defaultValue : 'pending'
     },
   },
   {
