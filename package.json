@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf ./dist && tsc",
-    "start": "NODE_ENV=development nodemon dist/server.js",
+    "start": "NODE_ENV=development npm run build && nodemon dist/server.js",
     "dev": "cross-env NODE_ENV=development ts-node-dev src/server.ts",
     "infra": "docker-compose up"
   },
