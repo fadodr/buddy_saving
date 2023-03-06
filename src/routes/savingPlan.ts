@@ -16,8 +16,8 @@ router.post(
   isAuth,
   controllerHandler(createSavingPlan, createSavingPlanSchema)
 );
-router.get('/invite/:savingId', isAuth, controllerHandler(inviteUsers, initeUserSchema));
-router.get(
+router.post('/invite/:savingId', isAuth, controllerHandler(inviteUsers, initeUserSchema));
+router.post(
   '/resolve/:token',
   isAuth,
   controllerHandler(resolveInvite, resolveInviteSchema)

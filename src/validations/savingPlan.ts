@@ -20,7 +20,7 @@ export const initeUserSchema = {
     paramsSchema: Joi.object().keys({
         savingId: Joi.string().guid({ version : 'uuidv1'}),
     }),
-    querySchema: Joi.object().keys({
+    inputSchema: Joi.object().keys({
         username : Joi.string().required()
     })
 }
@@ -29,7 +29,7 @@ export const resolveInviteSchema = {
     paramsSchema: Joi.object().keys({
         token: Joi.string().required(),
     }),
-    querySchema: Joi.object().keys({
+    inputSchema: Joi.object().keys({
         status: Joi.string().required(),
     }),
 };

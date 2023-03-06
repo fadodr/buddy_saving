@@ -5,9 +5,9 @@ import { Invitation } from '../../models/invitation';
 import { ControllerArgs } from '../../types';
 import { config,SavingPlanRole, InviteStatus } from '../../configs';
 
-export const inviteUsers = async ({ params, query, user }: ControllerArgs) => {
+export const inviteUsers = async ({ params, input, user }: ControllerArgs) => {
     const { savingId } = params;
-    const { username } = query;
+    const { username } = input;
 
     const savingPlan = await SavingPlan.findByPk(savingId);
     if (!savingPlan) throw new NotFoundError('Saving plan not found');

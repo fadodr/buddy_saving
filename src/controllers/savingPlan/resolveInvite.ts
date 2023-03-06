@@ -5,11 +5,11 @@ import { InviteStatus, SavingPlanRole, sequelize } from '../../configs';
 
 export const resolveInvite = async ({
   params,
-  query,
+  input,
   user,
 }: ControllerArgs) => {
   const { token } = params;
-  const { status } = query;
+  const { status } = input;
 
   const invite = await Invitation.findOne({ where: { token } });
   if (!invite) throw new NotFoundError('Invalid invite link');
